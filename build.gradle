@@ -1,0 +1,39 @@
+apply plugin: 'application'
+
+mainClassName = 'Main'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+    maven {
+        url "http://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile 'net.unit8.enkan:kotowari:0.1.0-beta1'
+    compile 'net.unit8.enkan:enkan-devel:0.1.0-beta2'
+    compile 'net.unit8.enkan:enkan-repl-pseudo:0.1.0-beta1'
+    compile 'net.unit8.enkan:enkan-component-undertow:0.1.0-beta1'
+    compile 'net.unit8.enkan:enkan-component-metrics:0.1.0-beta1'
+    testCompile 'junit:junit:4.12'
+}
+
+run {
+    standardInput  = jline.console.ConsoleReader
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : mainClassName
+    }
+    destinationDir = projectDir
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}

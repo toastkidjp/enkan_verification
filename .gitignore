@@ -1,0 +1,23 @@
+*.bat
+*.lnk
+WikiClient-*.jar
+temp.html
+md.html
+logs/
+user/
+.git/
+.gradle/
+.settings/
+bin/
+build/
+gradle/
+gradlew*
+*.exe
+.classpath
+.project
+*.groovy
+.class
+.externalToolBuilders/
+*.db
+*.bin
+"public/scenes/WikiClient2 - \343\202\263\343\203\224\343\203\274.fxml"
