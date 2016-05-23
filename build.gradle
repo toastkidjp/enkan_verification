@@ -27,7 +27,7 @@ dependencies {
 }
 
 run {
-    standardInput  = jline.console.ConsoleReader
+    standardInput  = System.in
 }
 
 jar {
